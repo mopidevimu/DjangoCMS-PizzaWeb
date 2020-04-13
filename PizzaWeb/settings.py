@@ -179,7 +179,8 @@ INSTALLED_APPS = [
     'djangocms_snippet',
     'djangocms_googlemap',
     'djangocms_video',
-    'PizzaWeb'
+    'PizzaWeb',
+    'pluginapp',
 ]
 
 LANGUAGES = (
@@ -215,7 +216,28 @@ CMS_TEMPLATES = (
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF ={
+    'daily_specials': {
+        'name': 'Daily Specials',
+        'plugins': ['Daily_Specials_Plugin'],
+        'plugin_labels': {
+            'Daily_Specials_Plugin': 'Add Daily Special'
+        },
+        'limits': {
+            'global': 1
+        }
+    },
+    'menu_item': {
+        'name': 'Menu Item',
+        'plugins': ['Menu_Item_Plugin'],
+        'plugin_labels': {
+            'Menu_Item_Plugin':'Add Menu Item'
+        },
+        'limits':{
+            'global': 100
+        }
+    }
+}
 
 DATABASES = {
     'default': {
