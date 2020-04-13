@@ -181,6 +181,7 @@ INSTALLED_APPS = [
     'djangocms_video',
     'PizzaWeb',
     'pluginapp',
+    'blog',
 ]
 
 LANGUAGES = (
