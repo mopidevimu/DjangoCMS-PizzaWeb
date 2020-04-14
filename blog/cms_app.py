@@ -2,10 +2,10 @@ from cms.app_base import CMSApp
 from cms.apphook_pool import apphook_pool
 
 
-class BlogApp(CMSApp):
-    name = "Blog"
-    urls = ["blog.urls"]
+@apphook_pool.register  # register the application
+class BlogApphook(CMSApp):
     app_name = "blog"
+    name = "Blog Application"
 
-
-apphook_pool.register(BlogApp)
+    def get_urls(self, page=None, language=None, **kwargs):
+        return ["blog.urls"]

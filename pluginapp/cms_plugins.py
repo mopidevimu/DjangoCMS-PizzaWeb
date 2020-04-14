@@ -1,11 +1,14 @@
+from .models import *
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
-from .models import *
+from django.utils.translation import ugettext as _
 
 
+@plugin_pool.register_plugin  # register the plugin
 class Daily_Specials_Plugin(CMSPluginBase):
-    model = Daily_specials
-    name = "Daily Specials"
+    model = Daily_specials  # model where plugin data are saved
+    module = _("DailySpecials")
+    name = _("Daily Specials")  # name of the plugin in the interface
     render_template = "daily_special.html"
 
     def render(self, context, instance, placeholder):
@@ -18,9 +21,11 @@ class Daily_Specials_Plugin(CMSPluginBase):
         return context
 
 
+@plugin_pool.register_plugin  # register the plugin
 class Menu_Item_Plugin(CMSPluginBase):
-    model = Menu_Item
-    name = "Menu Item"
+    model = Menu_Item  # model where plugin data are saved
+    module = _("MenuItem")
+    name = _("Menu Item")  # name of the plugin in the interface
     render_template = "menu_item.html"
 
     def render(self, context, instance, placeholder):
@@ -31,7 +36,3 @@ class Menu_Item_Plugin(CMSPluginBase):
             'description': instance.description
         })
         return context
-
-
-plugin_pool.register_plugin(Daily_Specials_Plugin)
-plugin_pool.register_plugin(Menu_Item_Plugin)
